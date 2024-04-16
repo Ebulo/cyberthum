@@ -98,9 +98,12 @@ function check_captcha() {
   if (userText.value === captchaStr) {
     output.className = "correctCaptcha";
     output.innerHTML = "Correct!";
+    return true;
+    
   } else {
     output.className = "incorrectCaptcha";
     output.innerHTML = "Incorrect, please try again!";
+    return false;
   }
 }
 
@@ -110,11 +113,28 @@ userText.addEventListener("keyup", function (e) {
   }
 });
 
-submitButton.addEventListener("click", check_captcha);
-
 refreshButton.addEventListener("click", generate_captcha);
+submitButton.addEventListener("click", () => {
+  if (check_captcha()) {
+    console.log(userText.value);
 
-function sendUsMail(e) {
-  e.preventDefault();
-  console.log(e);
+  }
+});
+
+function sendUsEmail() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var message = document.getElementById('message').value;
+            var budget = document.getElementById('budget').value;
+
+            var emailBody = "Name: " + name + "\n";
+            emailBody += "Email: " + email + "\n";
+            emailBody += "Phone: " + phone + "\n";
+            emailBody += "Message: " + message;
+
+            console.log(emailBody, "data", encodeURIComponent(emailBody));
+            window.open("mailto:poojas3419@gmail.com?subject=Contact%20Form%20Submission&body=" + encodeURIComponent(emailBody))
+
+            // window.location.href = "mailto:poojas3419@gmail.com?subject=Contact%20Form%20Submission&body=" + encodeURIComponent(emailBody);
 }
