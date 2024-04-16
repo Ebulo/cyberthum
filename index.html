@@ -596,6 +596,8 @@
                                                                                         Spaces.<br>Starting @40 Lacs*
                                                                                     </p>
                                                                                     <a class="uc_more"
+                                                                                        class="btn-open-popup"
+                                                                                        onclick="togglePopup()"
                                                                                         href="https://app.popt.in/APIRequest/click/f68de29033349">DOWNLOAD
                                                                                         PRICE LIST</a>
                                                                                 </div>
@@ -670,6 +672,8 @@
                                                                                         Spaces.<br>Starting @25 Lacs*
                                                                                     </p>
                                                                                     <a class="uc_more"
+                                                                                        class="btn-open-popup"
+                                                                                        onclick="togglePopup()"
                                                                                         href="https://app.popt.in/APIRequest/click/f68de29033349">DOWNLOAD
                                                                                         PRICE LIST</a>
                                                                                 </div>
@@ -969,7 +973,9 @@
                                                                         data-id="b680eb5" data-element_type="widget"
                                                                         data-widget_type="button.default">
                                                                         <div class="elementor-widget-container">
-                                                                            <div class="elementor-button-wrapper">
+                                                                            <div class="elementor-button-wrapper"
+                                                                                class="btn-open-popup"
+                                                                                onclick="togglePopup()">
                                                                                 <a class="elementor-button elementor-button-link elementor-size-sm elementor-animation-grow"
                                                                                     href="https://app.popt.in/APIRequest/click/645ffcb96260f">
                                                                                     <span
@@ -1007,7 +1013,8 @@
                                                                         data-id="5a8d7a1" data-element_type="widget"
                                                                         data-widget_type="button.default">
                                                                         <div class="elementor-widget-container">
-                                                                            <div class="elementor-button-wrapper">
+                                                                            <div class="elementor-button-wrapper btn-open-popup"
+                                                                                onclick="togglePopup()">
                                                                                 <a class="elementor-button elementor-button-link elementor-size-sm elementor-animation-grow"
                                                                                     href="https://app.popt.in/APIRequest/click/f68de29033349">
                                                                                     <span
@@ -1391,6 +1398,86 @@
         <div id="bravepop_element_lightbox_close" onclick="brave_lightbox_close()"></div>
         <div id="bravepop_element_lightbox_content"></div>
     </div>
+
+
+
+
+    <!-- popup form start -->
+
+    <div id="popupOverlay" class="overlay-container">
+        <div class="popup-box">
+            <div class="form-header">
+                <h2 style="color: #02285B;">Contact Us</h2>
+                <span onclick="togglePopup()" class="close-btn">
+                    x
+                </span>
+            </div>
+            <form class="form-container">
+                <label class="form-label" for="name">
+                    Name:
+                </label>
+                <input class="form-input" type="text" placeholder="Enter Your Name" id="name" name="name" required>
+
+                <label class="form-label" for="email">Email:</label>
+                <input class="form-input" type="email" placeholder="Enter Your Email" id="email" name="email" required>
+
+                <label class="form-label" for="number">Phone No:</label>
+                <input class="form-input" type="number" placeholder="Enter Your Number" id="number" name="number"
+                    required>
+
+                <label class="form-label" for="message">Message:</label>
+                <input class="form-input text-area" type="textarea" placeholder="Enter Your Message" id="message"
+                    name="message" required>
+
+
+                <button class="btn-submit" onclick="sendEmail" type="submit">
+                    Submit
+                </button>
+            </form>
+
+
+        </div>
+    </div>
+
+
+    <script>
+        function togglePopup() {
+            const overlay = document.getElementById('popupOverlay');
+            overlay.classList.toggle('show');
+        }
+
+        function sendEmail() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var message = document.getElementById('message').value;
+
+            var emailBody = "Name: " + name + "\n";
+            emailBody += "Email: " + email + "\n";
+            emailBody += "Phone: " + phone + "\n";
+            emailBody += "Message: " + message;
+
+            console.log(emailBody, "data", encodeURIComponent(emailBody));
+
+            window.location.href = "mailto:poojas3419@gmail.com?subject=Contact%20Form%20Submission&body=" + encodeURIComponent(emailBody);
+        }
+    </script>
+
+    <script>
+
+        let all_imgs = document.querySelectorAll('img')
+        console.log(all_imgs, "hegedw");
+        all_imgs.forEach(img => {
+
+            img.addEventListener('click', () => { togglePopup() })
+
+        })
+
+
+    </script>
+
+    <!-- popup form end -->
+
 
 
     <script src="scripts/index.js"></script>
